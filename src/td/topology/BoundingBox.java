@@ -6,7 +6,7 @@ public class BoundingBox {
 
     int nbEdgesHorizontal, nbEdgesVertical, nbEdges;
 
-    public BoundingBox(BoundingBox boundingBox) {}
+    public BoundingBox() {}
     public BoundingBox(java.awt.image.BufferedImage image) {}
     public BoundingBox(int[] bb_) {}
     public BoundingBox(java.lang.String fileName) {}
