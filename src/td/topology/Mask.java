@@ -1,4 +1,4 @@
-package topology;
+package td.topology;
 
 public class Mask extends BoundingBox {
     public boolean[][] val;

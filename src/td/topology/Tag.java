@@ -1,4 +1,4 @@
-package topology;
+package td.topology;
 
 public class Tag {
     boolean[] active;

@@ -1,8 +1,8 @@
-package inpainting;
+package td.inpainting;
 
-import topology.*;
+import td.topology.*;
 
-public class Inpainting {
+public class InPainting {
     private static int tgv = Integer.MAX_VALUE;
     public static void main(String[] args) {
 
@@ -13,7 +13,7 @@ public class Inpainting {
     private int[][] penMask;
     private BoundingBox window;
 
-    public Inpainting(Matrix _image, Mask _m) {}
+    public InPainting(Matrix _image, Mask _m) {}
     private int[] argmin(double[][] array) { return null; }
     private Point best_match(Patch patch, BoundingBox Box) { return null; }
     private void copyPatch(Point best_point, Patch patch) {}

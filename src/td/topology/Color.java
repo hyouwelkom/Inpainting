@@ -1,4 +1,4 @@
-package topology;
+package td.topology;
 
 public class Color {
     public static int dist (Color c1, Color c2) { return 0; }

@@ -1,4 +1,4 @@
-package topology;
+package td.topology;
 
 public class Edge {
     private static int[][] v;
