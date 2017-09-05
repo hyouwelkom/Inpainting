@@ -38,9 +38,11 @@ public class Color {
     }
 
     public void set(Color color) {
-
+        val[0] = color.val[0];
+        val[1] = color.val[1];
+        val[2] = color.val[2];
     }
 
     @Override
-    public String toString() { return ""; }
+    public String toString() { return "[B,G,R] = ["+val[0]+","+val[1]+","+val[2]+"]"; }
 }
