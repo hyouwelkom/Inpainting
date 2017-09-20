@@ -1,49 +1,61 @@
 package td.topology;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public class BoundingBox {
-    public int[] bb;
-    public int width, height, size;
+    private int[] bb;
+    private int width, height, size;
 
-    int nbEdgesHorizontal, nbEdgesVertical, nbEdges;
+    private int nbEdgesH, nbEdgesV, nbEdges;
 
-    public BoundingBox() {}
+    protected BoundingBox() {
+        this.bb = new int[4];
+    }
     public BoundingBox(BoundingBox boundingBox) {
+        this.bb = boundingBox.bb;
         this.width = boundingBox.width;
         this.height = boundingBox.height;
         this.size = boundingBox.size;
-        this.bb = boundingBox.bb;
-    }
-
-    public BoundingBox(java.awt.image.BufferedImage image) {
-        this.width = image.getWidth();
-        this.height = image.getHeight();
-        this.size = this.height*this.width;
+        this.nbEdgesH = boundingBox.nbEdgesH;
+        this.nbEdgesV = boundingBox.nbEdgesV;
+        this.nbEdges = boundingBox.nbEdges;
     }
     public BoundingBox(int[] bb_) {
-        this.width = bb[2]-bb[0];
-        this.height = bb[3]-bb[1];
         this.bb = bb_;
-        this.size= this.height*this.width;
+        this.recalculVar();
     }
-    public BoundingBox(java.lang.String fileName) {
-        try
-        {
-           BufferedImage img = ImageIO.read(new File(fileName));
-            this.width = img.getWidth();
-            this.height = img.getHeight();
-            this.size = this.width*this.height;
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+    public BoundingBox(BufferedImage image) {
+        this();
+        this.fromBufferedImage(image);
+        this.recalculVar();
+    }
+    public BoundingBox(String fileName) throws IOException {
+        this();
+        BufferedImage image = ImageIO.read(new File(fileName));
+        if (image == null) throw new IOException("File not found");
 
+        this.fromBufferedImage(image);
+        this.recalculVar();
     }
 
-    public BoundingBox crop(Patch patch) { //Il reste ça ç faire
-
-        return this;
-
-
+    private void recalculVar() {
+        this.width = this.bb[2];
+        this.height = this.bb[3];
+        this.size = this.width * this.height;
+        this.nbEdgesH = 2;
+        this.nbEdgesV = 2;
+        this.nbEdges = this.nbEdgesH + this.nbEdgesV;
+    }
+    private void fromBufferedImage(BufferedImage image) {
+        this.bb[0] = 0;
+        this.bb[1] = 0;
+        this.bb[2] = image.getWidth();
+        this.bb[3] = image.getHeight();
+    }
+    public BoundingBox crop(Patch patch) {
+        return null;
     }
 }
