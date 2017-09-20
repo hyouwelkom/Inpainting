@@ -1,10 +1,15 @@
 package td.topology;
 
+import java.io.IOException;
+
 public class Matrix extends BoundingBox {
     public Color[][] val;
 
-    public Matrix(String fileName) {
-        super();
+    public Matrix(String filename) throws IOException {
+
+    }
+
+    public void save(String) throws IOException {
 
     }
 

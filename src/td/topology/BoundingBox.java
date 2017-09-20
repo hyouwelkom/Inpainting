@@ -27,11 +27,13 @@ public class BoundingBox {
         this.bb = bb_;
         this.recalculVar();
     }
+
     public BoundingBox(BufferedImage image) {
         this();
         this.fromBufferedImage(image);
         this.recalculVar();
     }
+
     public BoundingBox(String fileName) throws IOException {
         this();
         BufferedImage image = ImageIO.read(new File(fileName));
@@ -49,12 +51,14 @@ public class BoundingBox {
         this.nbEdgesV = 2;
         this.nbEdges = this.nbEdgesH + this.nbEdgesV;
     }
+
     private void fromBufferedImage(BufferedImage image) {
         this.bb[0] = 0;
         this.bb[1] = 0;
         this.bb[2] = image.getWidth();
         this.bb[3] = image.getHeight();
     }
+
     public BoundingBox crop(Patch patch) {
         return null;
     }
