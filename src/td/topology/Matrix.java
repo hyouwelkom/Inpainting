@@ -9,10 +9,6 @@ public class Matrix extends BoundingBox {
 
     }
 
-    public void save(String) throws IOException {
-
-    }
-
     public void applyMask(Mask mask) {
 
     }
