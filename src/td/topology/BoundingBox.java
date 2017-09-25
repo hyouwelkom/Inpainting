@@ -58,6 +58,9 @@ public class BoundingBox {
         this.bb[2] = image.getWidth();
         this.bb[3] = image.getHeight();
     }
+    public int getBB(int i) {
+        return bb[i];
+    }
 
     public BoundingBox crop(Patch patch) {
         return null;
