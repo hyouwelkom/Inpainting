@@ -67,7 +67,4 @@ public class BoundingBox {
         return null;
     }
 
-    public int getBB(int i) {
-        return bb[i];
-    }
 }
