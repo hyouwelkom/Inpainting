@@ -6,10 +6,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class BoundingBox {
-    private int[] bb;
-    private int width, height, size;
+    protected int[] bb;
+    protected int width, height, size;
 
-    private int nbEdgesH, nbEdgesV, nbEdges;
+    protected int nbEdgesH, nbEdgesV, nbEdges;
 
     protected BoundingBox() {
         this.bb = new int[4];
