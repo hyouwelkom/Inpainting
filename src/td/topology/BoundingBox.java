@@ -14,6 +14,7 @@ public class BoundingBox {
     protected BoundingBox() {
         this.bb = new int[4];
     }
+
     public BoundingBox(BoundingBox boundingBox) {
         this.bb = boundingBox.bb;
         this.width = boundingBox.width;
@@ -64,5 +65,9 @@ public class BoundingBox {
 
     public BoundingBox crop(Patch patch) {
         return null;
+    }
+
+    public int getBB(int i) {
+        return bb[i];
     }
 }
