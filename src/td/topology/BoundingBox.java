@@ -36,6 +36,7 @@ public class BoundingBox {
     }
 
     public BoundingBox(String fileName) throws IOException {
+        //this(ImageIO.read(new File(fileName)));
         this();
         BufferedImage image = ImageIO.read(new File(fileName));
         if (image == null) throw new IOException("File not found");
