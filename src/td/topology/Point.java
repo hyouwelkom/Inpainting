@@ -4,7 +4,11 @@ public class Point {
     BoundingBox bb;
     public int i, j;
 
-    public Point(BoundingBox _bb, int _i, int _j) {}
+    public Point(BoundingBox _bb, int _i, int _j) {
+        this.bb = _bb;
+        this.i = i;
+        this.j = j;
+    }
 
 
     // Compare les coordonnées de chaque point, retourne true si égales
@@ -50,7 +54,99 @@ public class Point {
         return false;
     }
     public Edge[] outerEdges() {
-        return null; }
+        Edge[] outer = new Edge[4];
+        Edge edge1 = new Edge();
+        Edge edge2 = new Edge();
+        Edge edge3 = new Edge();
+        Edge edge4 = new Edge();
+        if (this.onBorder())
+        {
+            if (this.onCorner())
+            {
+
+                //On check si c'est un coin inferieur ou supérieur
+                if ( this.i == this.bb.getBB(0) )
+                {
+
+                    // Cas superieur : On check si le point est à gauche
+                    if ( this.j == this.bb.getBB(3) )
+                    {
+                        //Cas Superieur : gauche
+                        outer[2] = new Edge(this.bb,0,this.i,this.j,-1);
+                        outer[1] = new Edge(this.bb,1,this.i,this.j,1);
+                    }
+                    else
+                    {
+                        //Cas Superieur : droite
+                        outer[0] = new Edge(this.bb,0,this.i,this.j,1);
+                        outer[1] = new Edge(this.bb,1,this.i,this.j,1);
+                    }
+                }
+
+                // Cas inferieur
+                else
+                    {
+
+                    // Cas inferieur : On check si le point est à gauche
+                    if (this.j == this.bb.getBB(1)) {
+
+                        //Cas inferieur : gauche
+                        outer[0] = new Edge(this.bb,0,this.i,this.j,1);
+                        outer[3] = new Edge(this.bb,1, this.i, this.j,-1);
+                    } else {
+                        //Cas inferieur : droite
+                        outer[2] = new Edge(this.bb,0,this.i,this.j,-1);
+                        outer[3] = new Edge(this.bb,1, this.i, this.j,-1);
+                    }
+                }
+            }
+            else
+            {
+                // On vérifie sur quelle bordure est le point
+
+                // Bordure supérieure
+                if ( this.i == this.bb.getBB(0) )
+                {
+                    outer[2] = new Edge(this.bb,0,this.i,this.j,-1);
+                    outer[0] = new Edge(this.bb,0,this.i,this.j,1);
+                    outer[1] = new Edge(this.bb,1,this.i,this.j,1);
+                }
+
+                //Bordure inferieure
+                if ( this.i == this.bb.getBB(2) )
+                {
+                    outer[2] = new Edge(this.bb,0,this.i,this.j,-1);
+                    outer[0] = new Edge(this.bb,0,this.i,this.j,1);
+                    outer[3] = new Edge(this.bb,1, this.i, this.j,-1);
+                }
+
+                //Bordure droite
+                if ( this.i == this.bb.getBB(1) )
+                {
+                    outer[0] = new Edge(this.bb,0,this.i,this.j,1);// TODO VIRGIIIILLLLLLEEEEEEEEEEE mes couilles
+                    outer[1] = new Edge(this.bb,1,this.i,this.j,1);
+                    outer[3] = new Edge(this.bb,1, this.i, this.j,-1);
+                }
+
+                //Bordure gauche
+                if ( this.i == this.bb.getBB(3) )
+                {
+                    outer[2] = new Edge(this.bb,0,this.i,this.j,-1);
+                    outer[1] = new Edge(this.bb,1,this.i,this.j,1);
+                    outer[3] = new Edge(this.bb, 1, this.i, this.j,-1);
+                }
+            }
+        }
+        else {
+
+            // Cas point lambda
+            outer[0] = new Edge(this.bb,0, this.i, this.j,1);
+            outer[1] = new Edge(this.bb,1,this.i,this.j,1);
+            outer[2] = new Edge(this.bb,0,this.i,this.j,-1);
+            outer[3] = new Edge(this.bb,1, this.i, this.j,-1);
+        }
+        return outer;
+    }
 
     @Override
     public String toString() { return "("+i+";"+j+")"; }
