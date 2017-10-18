@@ -6,8 +6,6 @@ import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
 
-import static java.awt.Color.black;
-
 public class Matrix extends BoundingBox {
 
     public Color[][] val;
@@ -30,7 +28,14 @@ public class Matrix extends BoundingBox {
     }
 
     public void applyMask(Mask mask) throws IOException {
-        this(new Matrix((Matrix) mask, black);
+        Color BLACK = new Color(0,0,0);
+        for(int i=0; i<height; i++){
+            for(int j=0; j<width; j++){
+                if( mask.val[i][j]){
+                    this.val[i][j]=BLACK;
+                }
+            }
+        }
     }
 
     public void save(String fileName) throws IOException {

@@ -2,12 +2,9 @@ package td.topology;
 
 import java.io.IOException;
 
-
-
 public class Mask extends BoundingBox {
     public boolean[][] val;
-
-
+    
     public Mask(Matrix matrix, Color color) {
         super(matrix);
         val = new boolean[width][height];
