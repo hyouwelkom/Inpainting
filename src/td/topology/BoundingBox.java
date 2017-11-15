@@ -65,7 +65,11 @@ public class BoundingBox {
     }
 
     public BoundingBox crop(Patch patch) {
-        return null;
+        return new BoundingBox(new int[] {
+                bb[0]-patch.boundingBox.bb[0],
+                bb[1]-patch.boundingBox.bb[1],
+                bb[2]-patch.boundingBox.bb[2],
+                bb[3]-patch.boundingBox.bb[3]});
     }
 
 }

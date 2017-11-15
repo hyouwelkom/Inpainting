@@ -123,7 +123,7 @@ public class Point {
                 //Bordure droite
                 if ( this.i == this.bb.getBB(1) )
                 {
-                    outer[0] = new Edge(this.bb,0,this.i,this.j,1);// TODO VIRGIIIILLLLLLEEEEEEEEEEE mes couilles
+                    outer[0] = new Edge(this.bb,0,this.i,this.j,1);//
                     outer[1] = new Edge(this.bb,1,this.i,this.j,1);
                     outer[3] = new Edge(this.bb,1, this.i, this.j,-1);
                 }
