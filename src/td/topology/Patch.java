@@ -7,11 +7,12 @@ public class Patch {
     public Patch(Point point, int midlarg, BoundingBox window)
     {
        this.point= point;
-        // On initialise la boundingBox du patch avec la taille du midlarg et des coordonnées du point
-        this.boundingBox=new BoundingBox(new int[]{
-                Math.max(0, point.i - midlarg) - point.i, //Par rapport à Point.i pour le haut du patch
-                Math.max(0, point.j - midlarg) - point.j, //Par rapport à Point.j pour le bas du patch
-                Math.min(window.width, point.i + midlarg) - point.i, //Par rapport à Point.i pour la gauche du patch
-                Math.min(window.height, point.j + midlarg) - point.j}); //Par rapport à Point.i pour la droite du patch
+        int[] bb_patch;
+        // On init la boundingBox du patch avec la taille du midlarg et les coordonnées du point
+        this.boundingBox = new BoundingBox(
+
+                bb_patch = new int[]{
+                        Math.max(0, point.i - midlarg) - point.i, Math.max(0, point.j - midlarg) - point.j,//Haut et bas du patch  par rapport à Point.i et Point.j
+                        Math.min(window.width, point.i + midlarg) - point.i, Math.min(window.height, point.j + midlarg) - point.j});//Gauche et droite par rapport à Point.i et Point.j
     }
 }
