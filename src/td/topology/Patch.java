@@ -8,7 +8,7 @@ public class Patch {
     {
        this.point= point;
         int[] bb_patch;
-        // On init la boundingBox du patch avec la taille du midlarg et les coordonnées du point
+        // On init la bb du patch avec la taille du midlarg et les coordonnées du point
         this.boundingBox = new BoundingBox(
 
                 bb_patch = new int[]{
