@@ -39,7 +39,7 @@ public class BoundingBox {
         //this(ImageIO.read(new File(fileName)));
         this();
         BufferedImage image = ImageIO.read(new File(fileName));
-        if (image == null) throw new IOException("File not found");
+        if (image == null) throw new IOException("Fichier non trouvé!");
 
         this.fromBufferedImage(image);
         this.recalculVar();
@@ -64,12 +64,10 @@ public class BoundingBox {
         return bb[i];
     }
 
-    public BoundingBox crop(Patch patch) {
-        return new BoundingBox(new int[] {
-                bb[0]-patch.boundingBox.bb[0],
-                bb[1]-patch.boundingBox.bb[1],
-                bb[2]-patch.boundingBox.bb[2],
-                bb[3]-patch.boundingBox.bb[3]});
+    public BoundingBox crop(Patch p) {
+        int tab[] = { bb[0]-p.boundingBox.bb[0], bb[1]-p.boundingBox.bb[1], bb[2]-p.boundingBox.bb[2], bb[3]-p.boundingBox.bb[3] };
+        BoundingBox temp_bb = new BoundingBox(tab);
+        return temp_bb;
     }
 
 }
