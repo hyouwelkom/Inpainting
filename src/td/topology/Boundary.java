@@ -37,7 +37,7 @@ public class Boundary
     public String toString() {
         String s = new String();
         for (Edge e : edges) {//pour chaque bords
-            s += e + ";";//les affiches séparés par une virgule
+            s += e + ";";//les affiches séparés par un point virgule
         }
         return s;
     }
