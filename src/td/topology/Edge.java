@@ -6,14 +6,10 @@ public class Edge {
             {1,0},
             {0,1}
     };
-
-    private BoundingBox bb;
-    private int direction, i, j;
     public int label;
     public int orientation;
-
-    public Edge() { // Constructeur vide pour regler le problème d'initialisation dans Point.outerEdge()
-    }
+    private BoundingBox bb;
+    private int direction, i, j;
 
     public Edge(BoundingBox bb, int direction, int i, int j) { // Constructeur officiel
         this.bb = bb;
@@ -28,19 +24,25 @@ public class Edge {
         this.i = i;
         this.j = j;
         this.orientation = orientation;
+
+        if (direction != 0) { // Si point pas orienté
+            label = bb.nbEdgesH + (i + (orientation - 1) / 2 * v[direction][0]) * bb.height + (j + (orientation - 1) / 2 * v[direction][1]);
+        } else {
+            label = (i + (orientation - 1) / 2 * v[direction][0]) + (j + (orientation - 1) / 2 * v[direction][1]) * bb.width;
+        }
     }
 
     public Point[] border() { // On créer un nouveau point et on lui associe ses coordonées en appliquant la formule {i+orientation*vecteur direction}
-        Point p1 = new Point(this.bb, this.i, this.j);
-        int p2i,p2j;
-        p2i = this.i+this.orientation*v[direction][0];
-        p2j = this.j+this.orientation*v[direction][1];
-        Point p2 = new Point(this.bb, p2i, p2j);
-        // On rajoute les points dans le tableau de retour
-        Point[] tabPoint = new Point[]{p1,p2};
-        return tabPoint;
+        Point[] op = new Point[2];
+        op[0] = new Point(bb, i, j);
+        op[1] = new Point(bb, i + orientation * v[direction][0], j + orientation * v[direction][1]);
+        return op;
     }
 
     @Override //retour sous la forme "(i,j)(orientation,direction)"
-    public String toString() { return "("+i+","+j+")("+orientation+","+direction+")"; }
+    public String toString() {
+        Point[] sommets = border();
+        return sommets[0] + "-" + sommets[1];
+    }
+
 }
