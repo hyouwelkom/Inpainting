@@ -3,9 +3,15 @@ package td.topology;
 import java.util.ArrayList;
 
 public class Components {
-    public ArrayList<Component> components;
+    public ArrayList components;
 
-    public Components(Boundary boundary) {}
+    public Components(Boundary){
+
+    }
+
+    public Components(Boundary boundary) {
+
+    }
 
     public int size() { return 0; }
 }
