@@ -64,6 +64,18 @@ public class BoundingBox {
         return bb[i];
     }
 
+    public int[] getBb() {
+        return this.bb;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public BoundingBox crop(Patch p) {
         int tab[] = { bb[0]-p.boundingBox.bb[0], bb[1]-p.boundingBox.bb[1], bb[2]-p.boundingBox.bb[2], bb[3]-p.boundingBox.bb[3] };
         BoundingBox temp_bb = new BoundingBox(tab);

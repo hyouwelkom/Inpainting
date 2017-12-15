@@ -17,10 +17,21 @@ public class Component {
          tag.active[index]=false;
          tag.nbActive--;
         }
+        if (!(seedPoint.isEqualTo(point))){
+            points.add(point);
+        }
 }
 
     @Override
     public String toString() {
-        return "";
-    }
+        String s = "(";
+        if(!(points.isEmpty())){
+            s+=points.get(0);
+            for (Point p : points) {
+                s+="," + p;
+            }
+            s+=")";
+            }
+            return s;
+        }
 }
