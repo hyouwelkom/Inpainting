@@ -74,6 +74,23 @@ public class InPainting {
         return minarg;
     }
 
-    private Point best_match(Patch patch, BoundingBox Box) { return null; }
-    private void restore(int halfwidth, int searchWidth) {}
+    private Point best_match(Patch patch, BoundingBox Box) {
+
+    }
+
+
+    private void restore(int halfwidth, int searchWidth) {
+        Boundary bd = new Boundary(m);
+        Components co = new Components(bd);
+
+        if (co.size()!=0){
+            for(int i=0; i<co.components.size(); i++){
+                BoundingBox bbox;
+                if(!(searchWidth==0)){
+                    bbox=searchingBox(component, )
+                }
+            }
+        }
+    }
+
     private BoundingBox searchingBox(Component component, int halfSizeBox) { return null; }
