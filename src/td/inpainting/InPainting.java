@@ -2,10 +2,11 @@ package td.inpainting;
 
 import td.topology.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class InPainting {
-    private static int tgv = Integer.MAX_VALUE;
+    private static int tgv = 3*255*255+1;
     private Matrix image;
     private Mask m;
     private int[][] penMask;
@@ -74,22 +75,76 @@ public class InPainting {
         return minarg;
     }
 
-    private Point best_match(Patch patch, BoundingBox Box) {
+    private Point best_match(Patch p,BoundingBox Box){
+        if(Box == null) {
+            Box = new BoundingBox(new int[]{0,0,m.getWidth(),m.getWidth()});
+        }
 
+        BoundingBox sBox = Box.crop(p);
+
+        double[][] norme = new double[sBox.getWidth()][sBox.getHeight()];
+
+        for(int i = 0;i < sBox.getWidth(); i++) {
+            for(int j = 0; j < sBox.getHeight(); j++){
+                norme[i][j]=0;
+            }
+        }
+
+        for(int x = p.boundingBox.getBB(0); x < p.boundingBox.getBB(2); x++)
+        {
+            for(int y = p.boundingBox.getBB(1); y < p.boundingBox.getBB(3); y++)
+            {
+                int xmin = sBox.getBB(0) + x;
+                int xmax = sBox.getBB(2) + x;
+                int ymin = sBox.getBB(1) + y;
+                int ymax = sBox.getBB(3) + y;
+                int X = p.point.i + x;
+                int Y = p.point.j + y;
+
+                for(int i = 0; i < sBox.getWidth(); i++){
+                    for(int j = 0; j < sBox.getHeight(); j++) {
+                        norme[i][j]+=penMask[xmin+i][ymin+j];
+                    }
+
+                }
+                if (!m.val[X][Y]) {
+                    for (int k = 0; k < sBox.getWidth(); k++)
+                        for (int l = 0; l < sBox.getHeight(); l++)
+                            norme[k][l] += Color.dist(image.val[xmin + k][ymin + l], image.val[X][Y]);
+                }
+            }
+        }
+        int[] index = argmin(norme);
+        return new Point(m,index[0] + sBox.getBB(0),index[1] + sBox.getBB(1));
     }
 
 
-    private void restore(int halfwidth, int searchWidth) {
+    private void restore(int halfwidth, int searchWidth) throws IOException {
         Boundary bd = new Boundary(m);
         Components co = new Components(bd);
-
+        Point p;
+        Component c;
         if (co.size()!=0){
             for(int i=0; i<co.components.size(); i++){
+                c=(Component)co.components.get(i);
                 BoundingBox bbox;
                 if(!(searchWidth==0)){
-                    bbox=searchingBox(component, )
+                    bbox=searchingBox(c,searchWidth);
+                for(Point p: c.points){
+                    if ((m.touchedBy(p))){
+                        Patch patch=new Patch(p,halfwidth,window);
+                        Point po=best_match(patch,bbox);
+                        copyPatch(po,patch);
+                        }
+                    }
                 }
             }
+            bd=new Boundary(m);
+            co=new Components(bd);
+            if(searchWidth!=0){
+                searchWidth+=halfwidth;
+            }
+            System.out.println("finished");
         }
     }
 
