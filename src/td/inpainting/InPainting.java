@@ -54,7 +54,26 @@ public class InPainting {
         }
     }
 
-    private int[] argmin(double[][] array) { return null; }
+    private int[] argmin(double[][] array) {
+        int i = 0;
+        int j = 0;
+        int tmpi, tmpj;
+        double[][] minarray = new double[0][];
+        int[] minarg = new int[0];
+        for (double[] d : array) {
+            if (minarray[i][j] < array[i][j]) {
+                tmpi = i;
+                tmpj = j;
+                minarg[0] = tmpi;
+                minarg[1] = tmpj;
+            } else {
+                i++;
+                j++;
+            }
+        }
+        return minarg;
+    }
+
     private Point best_match(Patch patch, BoundingBox Box) { return null; }
     private void restore(int halfwidth, int searchWidth) {}
     private BoundingBox searchingBox(Component component, int halfSizeBox) { return null; }

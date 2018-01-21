@@ -76,6 +76,10 @@ public class BoundingBox {
         return height;
     }
 
+    public int get(int i) {
+        return bb[i];
+    }
+
     public BoundingBox crop(Patch p) {
         int tab[] = { bb[0]-p.boundingBox.bb[0], bb[1]-p.boundingBox.bb[1], bb[2]-p.boundingBox.bb[2], bb[3]-p.boundingBox.bb[3] };
         BoundingBox temp_bb = new BoundingBox(tab);

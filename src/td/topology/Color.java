@@ -43,6 +43,10 @@ public class Color {
         val[2] = color.val[2];
     }
 
+//    public Color get(int i){
+//        return val[i];
+//    }
+
     @Override
     public String toString() { return "[B,G,R] = ["+val[0]+","+val[1]+","+val[2]+"]"; }
 }

@@ -42,4 +42,8 @@ public class Matrix extends BoundingBox {
         BufferedImage matrix = ImageIO.read(new File(fileName));
         ImageIO.write(matrix, "BMP", new File(fileName + ".bmp"));
     }
+
+//    public int get(Color c){
+//        return val
+//    }
 }
