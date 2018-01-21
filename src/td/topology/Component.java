@@ -1,6 +1,7 @@
 package td.topology;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Component {
     public ArrayList<Point> points;
@@ -34,4 +35,8 @@ public class Component {
             }
             return s;
         }
+
+    public List<Point> getPoints() {
+        return points;
+    }
 }

@@ -148,4 +148,18 @@ public class InPainting {
         }
     }
 
-    private BoundingBox searchingBox(Component component, int halfSizeBox) { return null; }
+    private BoundingBox searchingBox(Component component, int marge) {
+        Point p = component.points.get(0);
+        int[] boundingbox = new int[] {p.i, p.j, p.i, p.j};
+        for (Point point : component.getPoints()) {
+            boundingbox[0] = Math.min(boundingbox[0], p.i);
+            boundingbox[1] = Math.min(boundingbox[1], p.j);
+            boundingbox[2] = Math.min(boundingbox[2], p.i);
+            boundingbox[3] = Math.min(boundingbox[3], p.j);
+        }
+
+        int[] temp = new int[]{Math.max(boundingbox[0] - marge, 0), Math.max(boundingbox[1] - marge, 0), Math.max(boundingbox[2] + marge, window.getWidth()), Math.min(boundingbox[3] + marge, window.getHeight())};
+        return new BoundingBox(temp);
+    }
+
+}
