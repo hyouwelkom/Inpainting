@@ -47,9 +47,8 @@ public class InPainting {
                 int newJ = patch.point.j + j;
 
                 if (m.val[newI][newJ]) {
-                    image.val.get(newI).set(newJ, image.val.get(mi + i).get(mj + j));
+                    image.val[newI][newJ].set(image.val[mi+i][mj+j]);
                 }
-
                 m.val[newI][newJ] = false;
             }
         }
