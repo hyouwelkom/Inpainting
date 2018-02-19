@@ -121,7 +121,6 @@ public class InPainting {
     private void restore(int halfwidth, int searchWidth) throws IOException {
         Boundary bd = new Boundary(m);
         Components co = new Components(bd);
-        Point p;
         Component c;
         if (co.size()!=0){
             for(int i=0; i<co.components.size(); i++){
