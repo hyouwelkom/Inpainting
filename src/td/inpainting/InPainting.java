@@ -32,10 +32,6 @@ public class InPainting {
         }
     }
 
-    public static void main(String[] args) {
-
-    }
-
     private void copyPatch(Point best_point, Patch patch) {
         int mi = best_point.i;
         int mj = best_point.j;
@@ -159,6 +155,20 @@ public class InPainting {
 
         int[] temp = new int[]{Math.max(boundingbox[0] - marge, 0), Math.max(boundingbox[1] - marge, 0), Math.max(boundingbox[2] + marge, window.getWidth()), Math.min(boundingbox[3] + marge, window.getHeight())};
         return new BoundingBox(temp);
+    }
+
+    public static void main(String[] args) throws Exception {
+        String maskpath = "C:\\Users\\Mickaelicoptere\\Desktop\\Inpainting\\src\\td\\assets\\img1.bmp";
+        String imgpath = "C:\\Users\\Mickaelicoptere\\Desktop\\Inpainting\\src\\td\\assets\\img1.bmp";
+        String output = "C:\\Users\\Mickaelicoptere\\Desktop\\Inpainting\\src\\td\\output\\output.bmp";
+        Mask mask = new Mask(maskpath, new Color(0,0,255));
+        Matrix img = new Matrix(imgpath);
+        img.applyMask(mask);
+        System.out.println("processing...");
+        InPainting inptg = new InPainting(img, mask);
+        inptg.restore(500,600);
+        img.save(output);
+        System.out.println("Success ! " + "\noutput path : " + output);
     }
 
 }

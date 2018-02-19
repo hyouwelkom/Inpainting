@@ -1,6 +1,7 @@
 package td.inpainting;
 
 import java.io.File;
+import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
+import td.topology.Matrix;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -48,7 +50,8 @@ public class Main extends Application {
                     String filePath = null;
                     for (File file : db.getFiles()) {
                         filePath = file.getAbsolutePath();
-                        System.out.println("Image à reconstruite : " + file.getName() + "\npath : " +filePath);
+                        System.out.println("Image à reconstruire : " + file.getName() + "\npath : " +filePath);
+
                     }
                 }
                 event.setDropCompleted(success);
