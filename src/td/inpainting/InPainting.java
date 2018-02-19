@@ -33,6 +33,7 @@ public class InPainting {
     }
 
     public static void main(String[] args) {
+
     }
 
     private void copyPatch(Point best_point, Patch patch) {
