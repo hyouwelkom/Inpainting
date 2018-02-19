@@ -48,7 +48,7 @@ public class Main extends Application {
                     String filePath = null;
                     for (File file : db.getFiles()) {
                         filePath = file.getAbsolutePath();
-                        System.out.println("Image à reconstruite : " + file.getName() + "\npath : " +filePath);
+                        System.out.println("Image à reconstruire : " + file.getName() + "\npath : " +filePath);
                     }
                 }
                 event.setDropCompleted(success);
