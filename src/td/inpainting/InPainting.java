@@ -159,14 +159,15 @@ public class InPainting {
 
     public static void main(String[] args) throws Exception {
         String maskpath = "C:\\Users\\Mickaelicoptere\\Desktop\\Inpainting\\src\\td\\assets\\img1.bmp";
-        String imgpath = "C:\\Users\\Mickaelicoptere\\Desktop\\Inpainting\\src\\td\\assets\\img1.bmp";
+        String imgpath = "C:\\Users\\Mickaelicoptere\\Desktop\\Inpainting\\src\\td\\assets\\img2-w-mask.bmp";
         String output = "C:\\Users\\Mickaelicoptere\\Desktop\\Inpainting\\src\\td\\output\\output.bmp";
-        Mask mask = new Mask(maskpath, new Color(0,0,255));
+        Mask mask = new Mask(maskpath, new Color(0,0,
+                ));
         Matrix img = new Matrix(imgpath);
         img.applyMask(mask);
         System.out.println("processing...");
         InPainting inptg = new InPainting(img, mask);
-        inptg.restore(500,600);
+        inptg.restore(20,20);
         img.save(output);
         System.out.println("Success ! " + "\noutput path : " + output);
     }

@@ -13,6 +13,7 @@ public class Color {
 
     //Cast int entry into byte
     public Color(int B, int G, int R) {
+        val=new byte[3];
         val[0] = ((byte) B);
         val[1] = ((byte) G);
         val[2] = ((byte) R);
