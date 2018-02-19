@@ -39,7 +39,7 @@ public class Tag {
         return null; // Si aucun des cas n'est bon, retourne nul.
     }
 
-    int indexActiveOuterEdge(Point p) {
+    int indexActiveOuterEdge(Point p) throws Exception {
         Edge[] test = p.outerEdges();
         for (Edge e : p.outerEdges()) { // pour tous les points en dehors des angles
             int i = index[e.label];

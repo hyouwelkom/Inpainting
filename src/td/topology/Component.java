@@ -7,7 +7,7 @@ public class Component {
     public ArrayList<Point> points;
 
 
-    public Component(Tag tag, Point seedPoint) {
+    public Component(Tag tag, Point seedPoint) throws Exception {
         Point point = seedPoint;
 
         while ((tag.indexActiveOuterEdge(point)!=-1)) {

@@ -119,7 +119,7 @@ public class InPainting {
     }
 
 
-    private void restore(int halfwidth, int searchWidth) throws IOException {
+    private void restore(int halfwidth, int searchWidth) throws Exception {
         Boundary bd = new Boundary(m);
         Components co = new Components(bd);
         Component c;

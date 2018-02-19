@@ -8,7 +8,7 @@ public class Components {
     public int size() {
         return components.size();}
 
-    public Components(Boundary boundary) {
+    public Components(Boundary boundary) throws Exception {
         components=new ArrayList<Component>();
         Tag tag=new Tag(boundary);
         Point seedPoint=tag.SeedPoint();
